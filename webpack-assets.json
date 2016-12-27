@@ -1,0 +1,11 @@
+{
+  "vendor": {
+    "js": "/portal-4-fun/vendor.bundle.js"
+  },
+  "main": {
+    "js": "/portal-4-fun/main.bundle.js"
+  },
+  "polyfills": {
+    "js": "/portal-4-fun/polyfills.bundle.js"
+  }
+}
