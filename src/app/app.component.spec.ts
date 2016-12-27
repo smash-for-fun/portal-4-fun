@@ -13,10 +13,15 @@ describe('App', () => {
     providers: [
       AppState,
       AppComponent
-    ]}));
+    ]
+  }));
 
-  it('should have a url', inject([ AppComponent ], (app: AppComponent) => {
-    expect(app.url).toEqual('https://twitter.com/AngularClass');
+  it('should have a url', inject([AppComponent], (app: AppComponent) => {
+    spyOn(console, 'log');
+    expect(console.log).not.toHaveBeenCalled();
+
+    app.ngOnInit();
+    expect(console.log).toHaveBeenCalled();
   }));
 
 });

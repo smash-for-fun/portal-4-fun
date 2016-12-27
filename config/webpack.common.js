@@ -14,11 +14,14 @@ const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplaceme
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const {
+  CheckerPlugin
+} = require('awesome-typescript-loader')
 const HtmlElementsPlugin = require('./html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /*
  * Webpack Constants
@@ -38,6 +41,9 @@ const METADATA = {
 module.exports = function (options) {
   isProd = options.env === 'production';
   return {
+    performance: {
+      hints: process.env.NODE_ENV === 'production' ? "warning" : false
+    },
 
     /*
      * Cache generated modules and chunks to improve performance for multiple incremental builds.
@@ -57,8 +63,8 @@ module.exports = function (options) {
     entry: {
 
       'polyfills': './src/polyfills.browser.ts',
-      'vendor':    './src/vendor.browser.ts',
-      'main':      './src/main.browser.ts'
+      'vendor': './src/vendor.browser.ts',
+      'main': './src/main.browser.ts'
 
     },
 
@@ -118,14 +124,31 @@ module.exports = function (options) {
           use: 'json-loader'
         },
 
-        /*
-         * to string and css loader support for *.css files
-         * Returns file content as string
-         *
-         */
+        {
+          test: /\.scss$/,
+          exclude: helpers.root('node_modules'),
+          loaders: ['raw-loader', 'sass-loader']
+        },
+
+        {
+          test: /\.scss$/,
+          include: helpers.root('node_modules'),
+          loaders: ["style-loader", "css-loader?sourceMap", "sass-loader?sourceMap"]
+        },
+
         {
           test: /\.css$/,
-          use: ['to-string-loader', 'css-loader']
+          exclude: helpers.root('src', 'app'),
+          loader: ExtractTextPlugin.extract({
+            fallbackLoader: 'style-loader',
+            loader: ['css-loader', 'postcss-loader']
+          })
+        },
+
+        {
+          test: /\.css$/,
+          include: helpers.root('src', 'app'),
+          loader: ['raw-loader', 'postcss-loader']
         },
 
         /* Raw loader support for *.html
@@ -168,7 +191,7 @@ module.exports = function (options) {
        *
        * See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
        */
-      new ForkCheckerPlugin(),
+      new CheckerPlugin(),
       /*
        * Plugin: CommonsChunkPlugin
        * Description: Shares common code between the pages.
@@ -205,10 +228,12 @@ module.exports = function (options) {
        *
        * See: https://www.npmjs.com/package/copy-webpack-plugin
        */
-      new CopyWebpackPlugin([
-        { from: 'src/assets', to: 'assets' },
-        { from: 'src/meta'}
-      ]),
+      new CopyWebpackPlugin([{
+        from: 'src/assets',
+        to: 'assets'
+      }, {
+        from: 'src/meta'
+      }]),
 
 
       /*

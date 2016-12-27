@@ -31,7 +31,6 @@
     "dist"
   ],
   "awesomeTypescriptLoaderOptions": {
-    "forkChecker": true,
     "useWebpackText": true
   },
   "compileOnSave": false,

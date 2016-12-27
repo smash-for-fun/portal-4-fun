@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+
 export type InternalStateType = {
   [key: string]: any
 };
@@ -39,3 +40,4 @@ export class AppState {
     return JSON.parse(JSON.stringify( object ));
   }
 }
+
