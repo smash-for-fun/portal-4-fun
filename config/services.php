@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | This file is for storing the credentials for third party services such
-    | as Stripe, Mailgun, SparkPost and others. This file provides a sane
+    | as Stripe, Mailgun, Mandrill, and others. This file provides a sane
     | default location for this type of information, allowing packages
     | to have a conventional place to find your various credentials.
     |
@@ -20,7 +20,7 @@ return [
     ],
 
     'ses' => [
-        'key' => env('SES_KEY'),
+        'key'    => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
         'region' => 'us-east-1',
     ],
@@ -30,19 +30,9 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\User::class,
-        'key' => env('STRIPE_KEY'),
+        'model'  => App\User::class,
+        'key'    => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
-    ],
-    'github' => [
-        'client_id' => env('GITHUB_ID'),
-        'client_secret' => env('GITHUB_SECRET'),
-        'redirect' => 'http://localhost:8000/auth/github/callback',
-    ],
-    'facebook' => [
-        'client_id' => env('FACEBOOK_ID'),
-        'client_secret' => env('FACEBOOK_SECRET'),
-        'redirect' => 'http://localhost:8000/auth/facebook/callback',
     ],
 
 ];
