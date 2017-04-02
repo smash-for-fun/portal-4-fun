@@ -24,7 +24,7 @@ return [
         |
         */
 
-        'permission' => Backpack\PermissionManager\app\Models\Permission::class,
+        'permission' => App\Models\Permission::class,
 
         /*
         |--------------------------------------------------------------------------
@@ -40,7 +40,20 @@ return [
         |
         */
 
-        'role' => Backpack\PermissionManager\app\Models\Role::class,
+        'role' => App\Models\Role::class,
+
+        /*
+          |--------------------------------------------------------------------------
+          | Group Model
+          |--------------------------------------------------------------------------
+          |
+          | When using the "HasRoles" trait from this package, we need to know which
+          | Eloquent model should be used to retrieve your roles. Of course, it
+          | is often just the "Role" model but you may use whatever you like.
+          |
+          */
+
+        'group' => App\Models\Group::class,
 
     ],
 
@@ -77,6 +90,19 @@ return [
         'roles' => 'roles',
 
         /*
+         |--------------------------------------------------------------------------
+         | Group Table
+         |--------------------------------------------------------------------------
+         |
+         | When using the "HasRoles" trait from this package, we need to know which
+         | table should be used to retrieve your roles. We have chosen a basic
+         | default value but you may easily change it to any table you like.
+         |
+         */
+
+        'groups' => 'groups',
+
+        /*
         |--------------------------------------------------------------------------
         | Permissions Table
         |--------------------------------------------------------------------------
@@ -101,6 +127,46 @@ return [
         */
 
         'user_has_permissions' => 'permission_users',
+
+        /*
+        |--------------------------------------------------------------------------
+        | Group Permissions Table
+        |--------------------------------------------------------------------------
+        |
+        | When using the "HasRoles" trait from this package, we need to know which
+        | table should be used to retrieve your users permissions. We have chosen a
+        | basic default value but you may easily change it to any table you like.
+        |
+        */
+
+        'group_has_permissions' => 'permission_groups',
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Group Permissions Table
+        |--------------------------------------------------------------------------
+        |
+        | When using the "HasRoles" trait from this package, we need to know which
+        | table should be used to retrieve your users permissions. We have chosen a
+        | basic default value but you may easily change it to any table you like.
+        |
+        */
+
+        'user_has_groups' => 'group_users',
+
+        /*
+          |--------------------------------------------------------------------------
+          | Group Roles Table
+          |--------------------------------------------------------------------------
+          |
+          | When using the "HasRoles" trait from this package, we need to know which
+          | table should be used to retrieve your users roles. We have chosen a
+          | basic default value but you may easily change it to any table you like.
+          |
+          */
+
+        'group_has_roles' => 'role_groups',
 
         /*
         |--------------------------------------------------------------------------

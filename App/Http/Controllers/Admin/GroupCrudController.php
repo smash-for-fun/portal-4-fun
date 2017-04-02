@@ -74,21 +74,24 @@ class GroupCrudController extends AppCrudController
 
         $this->crud->denyAccess(['list', 'create', 'update', 'delete']);
 
-        if ($this->user->can('list group')) {
+
+        if ($this->user->can('group list') || $this->user->hasRole('admin')) {
             $this->crud->allowAccess('list');
         }
 
-        if ($this->user->can('create group')) {
+        if ($this->user->can('group create') || $this->user->hasRole('admin')) {
             $this->crud->allowAccess('create');
         }
 
-        if ($this->user->can('update group')) {
+        if ($this->user->can('group update') || $this->user->hasRole('admin')) {
             $this->crud->allowAccess('update');
         }
 
-        if ($this->user->can('delete group')) {
+        if ($this->user->can('group delete') || $this->user->hasRole('admin')) {
             $this->crud->allowAccess('delete');
         }
+
+
 
     }
 

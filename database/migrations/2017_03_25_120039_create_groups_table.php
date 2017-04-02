@@ -12,28 +12,67 @@ class CreateGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('groups', function (Blueprint $table) {
+        $config = config('laravel-permission.table_names');
+
+        Schema::create($config['groups'], function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
             $table->timestamps();
         });
 
-        Schema::create('group_user', function (Blueprint $table)  {
-            $table->integer('user_id')->unsigned();
-            $table->integer('group_id')->unsigned();
 
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+
+        Schema::create($config['user_has_groups'], function (Blueprint $table) use ($config) {
+            $table->integer('group_id')->unsigned();
+            $table->integer('user_id')->unsigned();
 
             $table->foreign('group_id')
                 ->references('id')
-                ->on('groups')
+                ->on($config['groups'])
                 ->onDelete('cascade');
 
-            $table->primary(['user_id', 'group_id']);
+            $table->foreign('user_id')
+                ->references('id')
+                ->on($config['users'])
+                ->onDelete('cascade');
+
+            $table->primary(['group_id', 'user_id']);
+
+            Schema::create($config['group_has_permissions'], function (Blueprint $table) use ($config) {
+                $table->integer('permission_id')->unsigned();
+                $table->integer('group_id')->unsigned();
+
+                $table->foreign('permission_id')
+                    ->references('id')
+                    ->on($config['permissions'])
+                    ->onDelete('cascade');
+
+                $table->foreign('group_id')
+                    ->references('id')
+                    ->on($config['groups'])
+                    ->onDelete('cascade');
+
+                $table->primary(['permission_id', 'group_id']);
+            });
+
+            Schema::create($config['group_has_roles'], function (Blueprint $table) use ($config) {
+                $table->integer('role_id')->unsigned();
+                $table->integer('group_id')->unsigned();
+
+                $table->foreign('role_id')
+                    ->references('id')
+                    ->on($config['roles'])
+                    ->onDelete('cascade');
+
+                $table->foreign('group_id')
+                    ->references('id')
+                    ->on($config['groups'])
+                    ->onDelete('cascade');
+
+                $table->primary(['role_id', 'group_id']);
+            });
         });
+
     }
 
     /**
@@ -43,7 +82,10 @@ class CreateGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('group_user');
-        Schema::drop('groups');
+        $config = config('laravel-permission.table_names');
+        Schema::drop($config['group_has_permissions']);
+        Schema::drop($config['group_has_roles']);
+        Schema::drop($config['user_has_groups']);
+        Schema::drop($config['groups']);
     }
 }

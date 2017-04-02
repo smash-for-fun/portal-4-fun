@@ -9,6 +9,18 @@
 
                 <div class="panel-body">
                     You are logged in!
+
+                    {{--{{$user->getPermissionsViaRoles()}}--}}
+                    {{--{{$user->getPermissionsViaGroups()}}--}}
+                    {{--{{$user->getPermissionsViaGroupsRoles()}}--}}
+
+
+                    {{$user->getAllPermissions()}}
+
+
+                    {{--{{$user->getPermissionsViaRoles()}}--}}
+                    {{--{{$user->getPermissionsViaGroups()}}--}}
+                    {{--{{$user->getAllPermissions()}}--}}
                 </div>
             </div>
         </div>

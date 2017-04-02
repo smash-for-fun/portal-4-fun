@@ -18,7 +18,8 @@
         "backpack/permissionmanager": "^2.1",
         "laracasts/generators": "dev-master",
         "backpack/langfilemanager": "^1.0",
-        "spatie/laravel-translatable": "^1.2"
+        "spatie/laravel-translatable": "^1.2",
+        "barryvdh/laravel-debugbar": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

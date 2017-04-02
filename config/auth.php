@@ -70,6 +70,12 @@ return [
             'model'  => App\Models\User::class,
         ],
 
+        'groups' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Group::class,
+            'table' => 'user_has_permissions'
+        ]
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

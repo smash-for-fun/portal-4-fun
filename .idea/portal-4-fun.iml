@@ -58,6 +58,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/backpack/permissionmanager" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/backpack/settings" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/barryvdh/elfinder-flysystem-driver" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/barryvdh/laravel-debugbar" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/barryvdh/laravel-elfinder" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cocur/slugify" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
@@ -86,6 +87,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/league/flysystem" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/league/flysystem-cached-adapter" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/livecontrol/eloquent-datatable" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/maximebf/debugbar" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mockery/mockery" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mtdowling/cron-expression" />
@@ -163,6 +165,7 @@
           <root url="file://$MODULE_DIR$/vendor/backpack/permissionmanager" />
           <root url="file://$MODULE_DIR$/vendor/backpack/settings" />
           <root url="file://$MODULE_DIR$/vendor/barryvdh/elfinder-flysystem-driver" />
+          <root url="file://$MODULE_DIR$/vendor/barryvdh/laravel-debugbar" />
           <root url="file://$MODULE_DIR$/vendor/barryvdh/laravel-elfinder" />
           <root url="file://$MODULE_DIR$/vendor/cocur/slugify" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
@@ -191,6 +194,7 @@
           <root url="file://$MODULE_DIR$/vendor/league/flysystem" />
           <root url="file://$MODULE_DIR$/vendor/league/flysystem-cached-adapter" />
           <root url="file://$MODULE_DIR$/vendor/livecontrol/eloquent-datatable" />
+          <root url="file://$MODULE_DIR$/vendor/maximebf/debugbar" />
           <root url="file://$MODULE_DIR$/vendor/mockery/mockery" />
           <root url="file://$MODULE_DIR$/vendor/monolog/monolog" />
           <root url="file://$MODULE_DIR$/vendor/mtdowling/cron-expression" />
@@ -264,6 +268,7 @@
           <root url="file://$MODULE_DIR$/vendor/backpack/permissionmanager" />
           <root url="file://$MODULE_DIR$/vendor/backpack/settings" />
           <root url="file://$MODULE_DIR$/vendor/barryvdh/elfinder-flysystem-driver" />
+          <root url="file://$MODULE_DIR$/vendor/barryvdh/laravel-debugbar" />
           <root url="file://$MODULE_DIR$/vendor/barryvdh/laravel-elfinder" />
           <root url="file://$MODULE_DIR$/vendor/cocur/slugify" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
@@ -292,6 +297,7 @@
           <root url="file://$MODULE_DIR$/vendor/league/flysystem" />
           <root url="file://$MODULE_DIR$/vendor/league/flysystem-cached-adapter" />
           <root url="file://$MODULE_DIR$/vendor/livecontrol/eloquent-datatable" />
+          <root url="file://$MODULE_DIR$/vendor/maximebf/debugbar" />
           <root url="file://$MODULE_DIR$/vendor/mockery/mockery" />
           <root url="file://$MODULE_DIR$/vendor/monolog/monolog" />
           <root url="file://$MODULE_DIR$/vendor/mtdowling/cron-expression" />

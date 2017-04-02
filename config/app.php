@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'name' => 'Awesome',
 
     /*
     |--------------------------------------------------------------------------
@@ -178,6 +179,7 @@ return [
         /*
         * Other Service Providers...
         */
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
